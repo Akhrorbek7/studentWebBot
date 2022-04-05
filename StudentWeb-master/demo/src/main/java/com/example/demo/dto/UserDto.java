@@ -23,6 +23,7 @@ public class UserDto {
     @NotBlank(message = "First name invalid")
     private String firstName;
     private String lastName;
+    private String password;
     private Boolean status;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

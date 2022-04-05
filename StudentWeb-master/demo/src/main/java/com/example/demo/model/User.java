@@ -14,50 +14,51 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 
 @Entity
-@Table(name = "Users")
+@Table(name = ("Users"))
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "user_type_id", insertable = false, updatable = false)
+    @JoinColumn(name = ("user_type_id"), insertable = false, updatable = false)
     private UserType userType;
 
-    @Column(name = "user_type_id")
+    @Column(name = ("user_type_id"))
     private Long userTypeId;
 
-    @Column(name = "user_id")
+    @Column(name = ("user_id"))
     private Long userId;
 
-    @Column(name = "chat_id")
+    @Column(name = ("chat_id"))
     private Long chatId;
 
-    @Column(name = "username")
+    @Column(name = ("username"))
     private String username;
 
-    @Column(name = "phone", length = 45, nullable = false, unique = true)
+    @Column(name = ("phone"), length = 45, nullable = false, unique = true)
     private String phone;
 
-    @Column(name = "firstname")
+    @Column(name = ("firstname"))
     private String firstName;
 
-    @Column(name = "lastname")
+    @Column(name = ("lastname"))
     private String lastName;
 
-    @Column(name = "status")
+    @Column(name = ("password"))
+    private String password;
+
+    @Column(name = ("status"))
     private Boolean status;
 
-    @Column(name = "created_at")
+    @Column(name = ("created_at"))
     private LocalDateTime createdAt;
 
-    @Column(name = "updated_at")
+    @Column(name = ("updated_at"))
     private LocalDateTime updatedAt;
 
-    @Column(name = "deleted_at")
+    @Column(name = ("deleted_at"))
     private LocalDateTime deletedAt;
-
-    //khjgkjf
 }
 
 
