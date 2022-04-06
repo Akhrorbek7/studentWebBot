@@ -14,18 +14,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ClassService {
-    @Autowired
-    private ClassRepository classRepository;
-
-    @Autowired
-    private ModelMapper modelMapper;
-
-    @Autowired
-    private ClassTypeService classTypeService;
-
-    @Autowired
-    private RoomService roomService;
+public record ClassService(ClassRepository classRepository,
+                          ModelMapper modelMapper,
+                          UserGroupService userGroupService,
+                          AttendanceTypeService attendanceTypeService,
+                          RoomService roomService) {
 
     //Main functions
     public ClassDto get(Long id){
@@ -75,8 +68,9 @@ public class ClassService {
     }
 
     private void setId(Class entity) {
-        entity.setClassType(classTypeService.getEntity(entity.getClassTypeId()));
+        entity.setUserGroup(userGroupService.getEntity(entity.getGroupId()));
         entity.setRoom(roomService.getEntity(entity.getRoomId()));
+        entity.setAttendanceType(attendanceTypeService.getEntity(entity.getAttendanceTypeId()));
     }
 
     private void updateSet(Long id, Class aClass) {

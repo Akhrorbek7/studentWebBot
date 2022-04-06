@@ -1,11 +1,17 @@
 package com.example.demo.dto;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.*;
 
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserGroupDto {
     private Long id;
     private UserDto user;

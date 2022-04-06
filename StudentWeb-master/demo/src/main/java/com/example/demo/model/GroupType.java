@@ -10,29 +10,18 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 
 @Entity
-@Table(name = ("user_groups"))
-public class UserGroup {
+@Table(name = ("group_type"))
+public class GroupType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = ("user_id"), insertable = false, updatable = false)
-    private User user;
-
-    @Column(name = ("user_id"))
-    private Long userId;
-
-    @ManyToOne
-    @JoinColumn(name = ("group_id"), insertable = false, updatable = false)
-    private Group group;
-
-    @Column(name = ("group_id"))
-    private Long groupId;
+    @Column(name = ("name"))
+    private String name;
 
     @Column(name = ("status"))
     private Boolean status;

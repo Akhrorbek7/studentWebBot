@@ -11,27 +11,27 @@ import java.time.LocalDateTime;
 @Getter @Setter @AllArgsConstructor @NoArgsConstructor
 
 @Entity
-@Table(name = "user_type")
+@Table(name = ("user_type"))
 public class UserType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = ("name"))
     private String name;
 
-    @Column(name = "display_name")
+    @Column(name = ("display_name"))
     private String displayName;
 
-    @Column(name = "status")
+    @Column(name = ("status"))
     private Boolean status;
 
-    @Column(name = "created_at")
+    @Column(name = ("created_at"))
     private LocalDateTime createdAt;
 
-    @Column(name = "updated_at")
+    @Column(name = ("updated_at"))
     private LocalDateTime updatedAt;
 
-    @Column(name = "deleted_at")
+    @Column(name = ("deleted_at"))
     private LocalDateTime deletedAt;
 }

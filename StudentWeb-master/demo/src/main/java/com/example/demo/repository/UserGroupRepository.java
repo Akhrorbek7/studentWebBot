@@ -9,4 +9,7 @@ import java.util.Optional;
 public interface UserGroupRepository extends JpaRepository<UserGroup, Long> {
     List<UserGroup> findAllByDeletedAtNull();
     Optional<UserGroup> findByIdAndDeletedAtNull(Long id);
+
+    List<UserGroup> findAllByUserIdAndDeletedAtNull(Long id);
+    List<UserGroup> findAllByGroupIdAndDeletedAtIsNull(Long groupId);
 }

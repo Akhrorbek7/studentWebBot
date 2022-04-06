@@ -1,5 +1,6 @@
 package com.example.demo.security;
 
+import com.example.demo.security.util.JwtTokenUtil;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -41,7 +42,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
             return;
         }
 
-        String username = jwtTokenUtil.getUsername(token);
+        String username = jwtTokenUtil.getPhone(token);
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 
         UsernamePasswordAuthenticationToken authenticationToken =

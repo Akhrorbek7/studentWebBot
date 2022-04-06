@@ -10,28 +10,31 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 
 @Entity
-@Table(name = "class_type")
-public class ClassType {
+@Table(name = ("attendance_type"))
+public class AttendanceType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = ("name"))
     private String name;
 
-    @Column(name = "status")
+    @Column(name = ("reason_message"))
+    private String reasonMessage;
+
+    @Column(name = ("status"))
     private Boolean status;
 
-    @Column(name = "created_at")
+    @Column(name = ("created_at"))
     private LocalDateTime createdAt;
 
-    @Column(name = "updated_at")
+    @Column(name = ("updated_at"))
     private LocalDateTime updatedAt;
 
-    @Column(name = "deleted_at")
+    @Column(name = ("deleted_at"))
     private LocalDateTime deletedAt;
 }

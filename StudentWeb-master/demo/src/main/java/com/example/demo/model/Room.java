@@ -15,25 +15,25 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 
 @Entity
-@Table(name = "rooms")
+@Table(name = ("rooms"))
 public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank
-    @Column(name = "name")
+    @Column(name = ("name"))
     private String name;
 
-    @Column(name = "status")
+    @Column(name = ("status"))
     private Boolean status;
 
-    @Column(name = "created_at")
+    @Column(name = ("created_at"))
     private LocalDateTime createdAt;
 
-    @Column(name = "updated_at")
+    @Column(name = ("updated_at"))
     private LocalDateTime updatedAt;
 
-    @Column(name = "deleted_at")
+    @Column(name = ("deleted_at"))
     private LocalDateTime deletedAt;
 }

@@ -9,22 +9,24 @@ import java.util.Collection;
 import java.util.List;
 
 public class CustomUserDetail implements UserDetails {
+    private Long id;
     private String password;
-    private String username;
+    private String phone;
     private Boolean status;
-    private List<GrantedAuthority> roleList;
+    private List<GrantedAuthority> authorityList;
 
     public CustomUserDetail(User user) {
+        this.id = user.getId();
         this.password = user.getPassword();
-        this.username = user.getUsername();
+        this.phone = user.getUsername();
         this.status = user.getStatus();
-        this.roleList = List.of(new SimpleGrantedAuthority(user.getUserType().getName()));
+        this.authorityList = List.of(new SimpleGrantedAuthority(user.getUserType().getName()));
     }
 
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return roleList;
+        return authorityList;
     }
 
     @Override
@@ -34,7 +36,7 @@ public class CustomUserDetail implements UserDetails {
 
     @Override
     public String getUsername() {
-        return username;
+        return phone;
     }
 
     @Override
@@ -55,5 +57,16 @@ public class CustomUserDetail implements UserDetails {
     @Override
     public boolean isEnabled() {
         return status;
+    }
+
+    @Override
+    public String toString() {
+        return "CustomUserDetail{" +
+                "id=" + id +
+                ", password='" + password + '\'' +
+                ", phone='" + phone + '\'' +
+                ", status=" + status +
+                ", authorityList=" + authorityList +
+                '}';
     }
 }

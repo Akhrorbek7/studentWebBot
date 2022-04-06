@@ -1,18 +1,26 @@
 package com.example.demo.dto;
 import com.example.demo.model.UserType;
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.*;
 import org.hibernate.validator.constraints.Length;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@ToString
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserDto {
     private Long id;
+    private UserType userType;
     @NotNull(message = "User type invalid")
     private Long userTypeId;
-    private UserType userType;
     @NotNull(message = "User id invalid")
     private Long userId;
     private Long chatId;
@@ -24,6 +32,7 @@ public class UserDto {
     private String firstName;
     private String lastName;
     private String password;
+    private String token;
     private Boolean status;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

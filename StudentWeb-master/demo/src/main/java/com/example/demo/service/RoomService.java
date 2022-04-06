@@ -13,26 +13,19 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class RoomService {
-    private final RoomRepo roomRepo;
-    private final ModelMapper modelMapper;
-
-    public RoomService(RoomRepo roomRepo, ModelMapper modelMapper) {
-        this.roomRepo = roomRepo;
-        this.modelMapper = modelMapper;
-    }
+public record RoomService(RoomRepo roomRepo, ModelMapper modelMapper) {
 
     //Main functions
-    public RoomDto get(Long id){
+    public RoomDto get(Long id) {
         return modelMapper.map(getEntity(id), RoomDto.class);
     }
 
-    public List<RoomDto> getAll(){
+    public List<RoomDto> getAll() {
         List<Room> roomList = roomRepo.findAllAndDeletedAtNull();
         List<Room> list = new LinkedList<>();
-        if(!roomList.isEmpty()){
-            for (Room room : roomList){
-                if(room.getDeletedAt() == null){
+        if (!roomList.isEmpty()) {
+            for (Room room : roomList) {
+                if (room.getDeletedAt() == null) {
                     list.add(room);
                 }
             }
@@ -41,14 +34,14 @@ public class RoomService {
         throw new CustomGlobalExceptionHandler("Room list not found");
     }
 
-    public void create(RoomDto dto){
+    public void create(RoomDto dto) {
         Room room = modelMapper.map(dto, Room.class);
         room.setCreatedAt(LocalDateTime.now());
         room.setStatus(true);
         roomRepo.save(room);
     }
 
-    public void update(Long id, RoomDto dto){
+    public void update(Long id, RoomDto dto) {
         Room room = modelMapper.map(dto, Room.class);
         Room entity = getEntity(id);
         room.setId(id);
@@ -58,7 +51,7 @@ public class RoomService {
         roomRepo.save(room);
     }
 
-    public void delete(Long id){
+    public void delete(Long id) {
         Room room = getEntity(id);
         room.setDeletedAt(LocalDateTime.now());
         roomRepo.save(room);
@@ -67,7 +60,7 @@ public class RoomService {
     //Secondary functions
     public Room getEntity(Long id) {
         Optional<Room> optional = roomRepo.findByIdAndDeletedAtNull(id);
-        if(optional.isEmpty()){
+        if (optional.isEmpty()) {
             throw new CustomGlobalExceptionHandler("Room not found");
         }
         return optional.get();

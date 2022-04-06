@@ -1,9 +1,6 @@
 package com.example.demo.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -44,6 +41,9 @@ public class User {
 
     @Column(name = ("lastname"))
     private String lastName;
+
+    @Column(name = ("email"))
+    private String email;
 
     @Column(name = ("password"))
     private String password;
